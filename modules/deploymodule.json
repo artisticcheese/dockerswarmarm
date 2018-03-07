@@ -1,0 +1,38 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Automation Account Name": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-10-31",
+            "location": "southcentralus",
+            "name": "[parameters('Automation Account Name')]",
+            "type": "Microsoft.Automation/automationAccounts",
+            "properties": {
+                "sku": {
+                    "name": "Basic"
+                }
+            },
+            "resources": [
+                {
+                    "name": "cdscdockerswarm",
+                    "type": "modules",
+                    "apiVersion": "2015-10-31",
+                    "properties": {
+                        "contentLink": {
+                            "uri": "https://github.com/artisticcheese/dockerswarmarm/raw/master/modules/cdscdockerswarm.zip"
+                        }
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('Automation Account Name'))]"
+                    ]
+                }
+            ]
+        }
+    ],
+    "outputs": {}
+}

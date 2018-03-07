@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmssName": {
+      "value": "swarmhosts"
+    },
+    "instanceCount": {
+      "value": 2
+    },
+    "adminUsername": {
+      "value": "cloudadmin"
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.KeyVault/vaults/<VaultName>"
+        },
+        "secretName": "WindowsPasswordSecret"
+      }
+    },
+    "registrationUrl": {
+      "value": "https://scus-agentservice-prod-1.azure-automation.net/accounts/6d21e7a4-df4b-403c-b80b-8e977b7063c4"
+    },
+    "registrationKey": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.KeyVault/vaults/<VaultName>"
+        },
+        "secretName": "AzureAutomationKey"
+      }
+    },
+    "hostVMprofile": {
+      "value": {
+        "hostvmSku": "Standard_D2",
+        "windowsOSVersion": "Datacenter-Core-1709-with-Containers-smalldisk",
+        "offer": "WindowsServerSemiannual"
+      }
+    },
+    "LicenseType": {
+      "value": "Windows_Server"
+    },
+    "AutomationaccountName": {
+      "value": "AutomationAccount"
+    },
+    "AutomationaccountRGName": {
+      "value": "Utility-RG"
+    },
+    "WorkerNodeDSCConfigURL": {
+      "value": "https://raw.githubusercontent.com/artisticcheese/dockerswarmarm/master/swarmhost.ps1"
+    },
+    "SwarmManagerNodeDSCConfigURL": {
+      "value": "https://raw.githubusercontent.com/artisticcheese/dockerswarmarm/master/swarmmanager.ps1"
+    },
+    "swarmmanagerdeploymenturi": {
+      "value": "https://raw.githubusercontent.com/artisticcheese/dockerswarmarm/master/nestedtemplates/swarmmanagerdeployment.json"
+    }
+  }
+}
