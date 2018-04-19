@@ -536,7 +536,9 @@
       "name": "[variables('swarmanagerdeploymentname')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
-      "dependsOn": [],
+      "dependsOn": [
+        "[variables('swarmmanager1SubnetRef')]"
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {

@@ -211,8 +211,7 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('swarmmanagerpublicIPName'))]",
-        "[parameters('swarmmanager1SubnetRef')]"
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('swarmmanagerpublicIPName'))]"
       ],
       "tags": {
         "displayName": "swarmmanager1Nic"
