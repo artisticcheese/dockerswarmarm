@@ -174,9 +174,9 @@
                   "dependsOn": [
                     "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'))]",
                     "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/swarmmanager')]",
-                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/Choco')]",
-                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/xNetworking')]",
-                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/cdscdockerswarm')]"
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/modules/Choco')]",
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/modules/xNetworking')]",
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/modules/cdscdockerswarm')]"
                   ],
                   "properties": {
                     "configuration": {

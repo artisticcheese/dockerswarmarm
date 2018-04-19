@@ -2,7 +2,7 @@
 
 Param(
     [string] $ResourceGroupLocation = "southcentralus",
-    [string] $ResourceGroupName = 'Swarm-RG2',
+    [string] $ResourceGroupName = 'Swarm-RG',
     [string] $TemplateFile = 'azuredeploy.json',
     [string] $TemplateParametersFile = 'azuredeploy.parameters-show.json'
 )
