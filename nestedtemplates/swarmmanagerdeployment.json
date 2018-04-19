@@ -42,7 +42,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[reference(concat('Microsoft.Network/networkInterfaces/', parameters('swarmmanager1NicName')), '2018-04-01')]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('swarmmanager1NicName'))]"
             }
           ]
         }
