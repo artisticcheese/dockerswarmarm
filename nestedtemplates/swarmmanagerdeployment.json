@@ -212,7 +212,7 @@
       "apiVersion": "2016-03-30",
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', parameters('swarmmanagerpublicIPName'))]",
-        "[concat('Microsoft.Network/subnets/', parameters('swarmmanager1SubnetRef'))]"
+        "[parameters('swarmmanager1SubnetRef')]"
       ],
       "tags": {
         "displayName": "swarmmanager1Nic"
