@@ -133,6 +133,19 @@
                   ]
                 },
                 {
+                  "name": "cdscdockerswarm",
+                  "type": "modules",
+                  "apiVersion": "2015-10-31",
+                  "properties": {
+                      "contentLink": {
+                          "uri": "https://github.com/artisticcheese/dockerswarmarm/raw/master/modules/cdscdockerswarm.zip"
+                      }
+                  },
+                  "dependsOn": [
+                      "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'))]"
+                  ]
+              },
+                {
                   "name": "swarmmanager",
                   "type": "configurations",
                   "apiVersion": "2018-01-15",
