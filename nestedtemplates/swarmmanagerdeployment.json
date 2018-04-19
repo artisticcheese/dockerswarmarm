@@ -8,7 +8,7 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
       "dependsOn": [
-        "[resourceid(concat('Microsoft.Network/networkInterfaces/', parameters('swarmmanager1NicName')))]"
+        "[resourceid('Microsoft.Network/networkInterfaces/', parameters('swarmmanager1NicName'))]"
       ],
       "tags": {
         "displayName": "swarmmanager1"
