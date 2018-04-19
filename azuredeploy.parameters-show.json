@@ -14,18 +14,18 @@
     "adminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/7d0ba820-d01c-4b11-ae4b-e9134b0999d8/resourceGroups/Utility-RG/providers/Microsoft.KeyVault/vaults/McafeeKeyVault"
+          "id": "/subscriptions/b55607ab-c703-4044-a526-72bd701b0d48/resourceGroups/Utility-RG/providers/Microsoft.KeyVault/vaults/GregKeyVault"
         },
         "secretName": "WindowsPasswordSecret"
       }
     },
     "registrationUrl": {
-      "value": "https://scus-agentservice-prod-1.azure-automation.net/accounts/6d27e7a4-df4b-403c-b80b-8e977b7063c4"
+      "value": "https://scus-agentservice-prod-1.azure-automation.net/accounts/3459491c-abe7-4802-91d2-be4313be6272"
     },
     "registrationKey": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/7d0ba820-d01c-4b11-ae4b-e9134b0999d8/resourceGroups/Utility-RG/providers/Microsoft.KeyVault/vaults/McafeeKeyVault"
+          "id": "/subscriptions/b55607ab-c703-4044-a526-72bd701b0d48/resourceGroups/Utility-RG/providers/Microsoft.KeyVault/vaults/GregKeyVault"
         },
         "secretName": "AzureAutomationKey"
       }
