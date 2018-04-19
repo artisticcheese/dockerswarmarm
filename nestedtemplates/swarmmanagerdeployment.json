@@ -173,7 +173,10 @@
                   "tags": {},
                   "dependsOn": [
                     "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'))]",
-                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/swarmmanager')]"
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/swarmmanager')]",
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/Choco')]",
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/xNetworking')]",
+                    "[concat('Microsoft.Automation/automationAccounts/', parameters('AutomationAccountName'),'/Configurations/modules/cdscdockerswarm')]"
                   ],
                   "properties": {
                     "configuration": {
