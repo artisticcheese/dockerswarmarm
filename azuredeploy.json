@@ -149,15 +149,15 @@
     }
   },
   "variables": {
-    "namingInfix": "[toLower(substring(concat(parameters('vmssName'), uniqueString(resourceGroup().id)), 0, 9))]",
+    "namingInfix": "[toLower(substring(concat(parameters('vmssName'), uniqueString(resourceGroup().id)), 0, 15))]",
     "addressPrefix": "10.0.0.0/16",
     "subnetPrefix": "10.0.8.0/21",
-    "virtualNetworkName": "[concat(variables('namingInfix'), 'vnet')]",
+    "virtualNetworkName": "[concat(variables('namingInfix'), '-vnet')]",
     "natPoolName": "[concat(variables('namingInfix'), 'natpool')]",
-    "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
-    "subnetName": "[concat(variables('namingInfix'), 'subnet')]",
-    "nicName": "[concat(variables('namingInfix'), 'nic')]",
-    "ipConfigName": "[concat(variables('namingInfix'), 'ipconfig')]",
+    "publicIPAddressName": "[concat(variables('namingInfix'), '-pip')]",
+    "subnetName": "[concat(variables('namingInfix'), '-subnet')]",
+    "nicName": "[concat(variables('namingInfix'), '-nic')]",
+    "ipConfigName": "[concat(variables('namingInfix'), '-ipconfig')]",
     "swarmanagerdeploymentname": "[concat('swarmmanagerdeployment-', uniquestring(deployment().name))]",
     "automationAccountResourceId": "[resourceId(parameters('automationAccountRGName'),'Microsoft.Automation/automationAccounts',parameters('automationAccountName'))]",
     "swarmhostimageReference": {
@@ -167,7 +167,7 @@
       "version": "latest"
     },
     "virtualNetworkID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
-    "appGwPublicIPAddressName": "[concat(variables('namingInfix'), 'appGwPip')]",
+    "appGwPublicIPAddressName": "[toLower(concat(variables('namingInfix'), 'appGwPip'))]",
     "bePoolName": "[concat(variables('namingInfix'), 'bepool')]",
     "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
     "appGwName": "[concat(variables('namingInfix'), 'appGw')]",
@@ -201,6 +201,9 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('virtualNetworkName')]",
       "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', 'SwarmNSG')]"
+      ],
       "apiVersion": "2017-06-01",
       "properties": {
         "addressSpace": {
@@ -316,7 +319,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "appgwvip"
+          "domainNameLabel": "[variables('appGwPublicIPAddressName')]"
         }
       }
     },
@@ -327,7 +330,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "rdpvip"
+          "domainNameLabel": "[variables('publicIPAddressName')]"
         }
       },
       "type": "Microsoft.Network/publicIPAddresses"

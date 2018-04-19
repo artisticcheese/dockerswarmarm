@@ -7,6 +7,9 @@
       "type": "Microsoft.Compute/virtualMachines",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
+      "dependsOn": [
+        "[resourceid(concat('Microsoft.Network/networkInterfaces/', parameters('swarmmanager1NicName')))]"
+      ],
       "tags": {
         "displayName": "swarmmanager1"
       },
@@ -39,7 +42,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('swarmmanager1NicName'))]"
+              "id": "[reference(concat('Microsoft.Network/networkInterfaces/', parameters('swarmmanager1NicName')), '2016-01-01')]"
             }
           ]
         }

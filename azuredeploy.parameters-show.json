@@ -41,7 +41,7 @@
       "value": "Windows_Server"
     },
     "AutomationaccountName": {
-      "value": "AutomationAccount"
+      "value": "AzureAutomation"
     },
     "AutomationaccountRGName": {
       "value": "Utility-RG"
