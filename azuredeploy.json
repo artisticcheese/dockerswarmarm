@@ -170,8 +170,8 @@
     "appGwPublicIPAddressName": "[toLower(concat(variables('namingInfix'), 'appGwPip'))]",
     "bePoolName": "[concat(variables('namingInfix'), 'bepool')]",
     "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
-    "appGwName": "[concat(variables('namingInfix'), 'appGw')]",
-    "loadBalancerName": "[concat(variables('namingInfix'), 'lb')]",
+    "appGwName": "[concat(variables('namingInfix'), '-appGw')]",
+    "loadBalancerName": "[concat(variables('namingInfix'), '-lb')]",
     "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]",
     "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('loadBalancerName'))]",
     "appGwPublicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('appGwPublicIPAddressName'))]",
@@ -429,7 +429,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "name": "[variables('namingInfix')]",
+      "name": "[take(parameters('vmssName'), 9)]",
       "location": "[resourceGroup().location]",
       "apiVersion": "2017-03-30",
       "dependsOn": [
@@ -460,7 +460,7 @@
             "imageReference": "[variables('swarmhostimageReference')]"
           },
           "osProfile": {
-            "computerNamePrefix": "[variables('namingInfix')]",
+            "computerNamePrefix": "[take(parameters('vmssName'), 9)]",
             "adminUsername": "[parameters('adminUsername')]",
             "adminPassword": "[parameters('adminPassword')]"
           },

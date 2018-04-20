@@ -10,7 +10,8 @@ Configuration swarmhost
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DSCResource -moduleName xNetworking
     Import-DscResource -ModuleName cChoco 
-    Import-DSCResource -moduleName cDSCDockerSwarm
+    Import-DSCResource -moduleName cDSCDockerSwarm -ModuleVersion 0.9.2
+
 
     Node localhost
     {
@@ -20,7 +21,7 @@ Configuration swarmhost
         }
 
         cDockerSwarm Swarm {
-            DependsOn       = @('[cDockerConfig]DaemonJson', "[File]ClientCert", "[File]ClientKey")
+            DependsOn       = @('[cDockerConfig]DaemonJson', "[Script]CertFiles")
             SwarmMasterURI  = "$($SwarmManagerURI):2377"
             SwarmMode       = 'Active'
             ManagerCount    = 3

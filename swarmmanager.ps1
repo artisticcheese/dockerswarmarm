@@ -13,7 +13,7 @@ Configuration SwarmManager
     
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName cChoco 
-    Import-DSCResource -moduleName cDSCDockerSwarm
+    Import-DSCResource -moduleName cDSCDockerSwarm -ModuleVersion 0.9.2
     Import-DSCResource -moduleName xNetworking
     Node localhost
     {
@@ -32,12 +32,10 @@ Configuration SwarmManager
         xFirewallProfile DisablePublic {
             Enabled = "False"
             Name   = "Public"
-
         }
         xFirewallProfile DisablePrivate {
             Enabled = "False"
             Name   = "Private"
-
         }
         cDockerSwarm Swarm {
             DependsOn       = '[cDockerConfig]DaemonJson'
