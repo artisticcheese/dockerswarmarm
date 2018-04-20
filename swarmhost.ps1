@@ -21,7 +21,7 @@ Configuration swarmhost
         }
 
         cDockerSwarm Swarm {
-            DependsOn       = @('[cDockerConfig]DaemonJson', "[Script]CertFiles")
+            DependsOn       = @('[cDockerConfig]DaemonJson', '[Script]CertFiles')
             SwarmMasterURI  = "$($SwarmManagerURI):2377"
             SwarmMode       = 'Active'
             ManagerCount    = 3

@@ -38,7 +38,7 @@ Configuration SwarmManager
             Name   = "Private"
         }
         cDockerSwarm Swarm {
-            DependsOn       = '[cDockerConfig]DaemonJson'
+            DependsOn       = @('[cDockerConfig]DaemonJson', '[Script]CertFiles')
             SwarmMasterURI  = "$($SwarmManagerURI):2377"
             SwarmMode       = 'Active'
             ManagerCount    = 3
